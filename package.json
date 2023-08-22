@@ -1,7 +1,7 @@
 {
-  "name": "ultrastar",
+  "name": "ultra-scrap",
   "version": "1.0.0",
-  "description": "",
+  "description": "Download any song from biggest database of UltraStar songs for your karaoke party.",
   "type": "module",
   "scripts": {
     "start": "node build/src/index.js",

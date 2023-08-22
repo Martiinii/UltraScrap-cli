@@ -26,6 +26,11 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
+    - name: 'Create env file'
+      run: |
+        touch .env
+        echo USERNAME="username" >> .env
+        echo PASSWORD="password" >> .env
     - run: npm ci
     - run: npm run build --if-present
     - run: npm test

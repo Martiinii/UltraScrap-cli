@@ -62,5 +62,5 @@ If there was an error while downloading YouTube video/audio, open the link and c
 
 If the error is due to outage, wait a few minutes and try again, in any other case you have to find other way to download it.
 # Links
-https://usdb.animux.de - The biggest database of UltraStar songs (lyrics only)
-https://ultrastar-es.org/ - Smaller database of songs, includes audio and video. You can download **UltraStar WorldParty** here.
+- https://usdb.animux.de - The biggest database of UltraStar songs (lyrics only)
+- https://ultrastar-es.org/ - Smaller database of songs, includes audio and video. You can download **UltraStar WorldParty** here.

@@ -13,8 +13,9 @@ Instead of:
 - Changing filenames to match those in song txt file
 
 Just enter song id into the console.
+
 # How to use
-1. Create an account on https://usdb.animux.de (I recommend creating 2 accounts, one for browsing, second one for scrapper, see [[#Why two accounts?]])
+1. Create an account on https://usdb.animux.de (I recommend creating 2 accounts, one for browsing, second one for scrapper, see FAQ)
 2. Create `.env` file in the root directory and put the credentials here:
 ```env
 USERNAME="Your username here"

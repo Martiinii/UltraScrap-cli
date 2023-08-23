@@ -47,7 +47,7 @@ Copy it and paste it into the console when prompted.
 One account will be used for us to search songs in the database, second one for scrapper. When we start the script, it will log in and store PHP session cookie and any other session would be destroyed. This means that we can only be logged in from one device at a time. So we could either search or use script. Second account solves this problem for us (Searching database through the script in on the TODO list).
 
 ## YouTube link not found. Enter YouTube link manually
-If link to YouTube video could not be found automatically, find the song and grab it link, then paste it into console when prompted.
+If link to YouTube video could not be found automatically, find the song and grab its link, then paste it into console when prompted.
 
 ## Lyrics are not synchronized with music/video
 There is currently no easy fix for this. You could either download other version (if available) or mess with **START** and **END** variable in txt file. When the lyrics are mismatched/missing, find another version.
@@ -58,7 +58,7 @@ If there was an error while downloading YouTube video/audio, open the link and c
 - Video is age restricted
 - Video is not available in your country
 - Video doesn't exist anymore
-- The author of the video changes its visibility
+- The author of the video changed its visibility
 
 If the error is due to outage, wait a few minutes and try again, in any other case you have to find other way to download it.
 # Links

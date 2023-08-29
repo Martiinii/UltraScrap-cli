@@ -10,9 +10,7 @@ txtBody.set('wd', "1")
  * @param id Song id
  * @returns Song txt as string
  */
-export const getSongTxt = async (id: string | number) => {
-    console.log(`Fetching id: ${id}`);
-
+export const fetchSongTxt = async (id: string | number) => {
     const txt = await fetch(`https://usdb.animux.de/index.php?link=gettxt&id=${id}`, {
         method: "POST",
         headers: {

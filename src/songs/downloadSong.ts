@@ -1,8 +1,8 @@
 import { downloadSongCover } from "./downloadSongCover.js";
 import { getSongMetadata } from "./getSongMetadata.js"
-import { getSongTxt } from "./getSongTxt.js"
+import { fetchSongTxt } from "./fetchSongTxt.js"
 import { mkdirSync, writeFileSync } from "node:fs"
-import { getSongYoutubeLink } from "./getSongYoutubeLink.js";
+import { fetchSongYouTubeLink } from "./fetchSongYouTubeLink.js";
 import { createWriteStream } from 'node:fs'
 import ytdl from "ytdl-core";
 import { prompt } from "../index.js";
@@ -14,8 +14,12 @@ import { prompt } from "../index.js";
  * @param id Id of the song
  */
 export const downloadSong = async (id: string | number) => {
-    const txtData = await getSongTxt(id);
+    console.log(`Fetching song with id: ${id}`)
+    const txtData = await fetchSongTxt(id);
     const metadata = getSongMetadata(txtData);
+
+    console.log(`Song: ${metadata.TITLE} by ${metadata.ARTIST}`)
+
 
     const dirPath = `songs/${metadata.ARTIST} - ${metadata.TITLE}`;
 
@@ -35,7 +39,7 @@ export const downloadSong = async (id: string | number) => {
     console.log('Downloaded cover image');
 
 
-    let youtubeLink = await getSongYoutubeLink(id);
+    let youtubeLink = await fetchSongYouTubeLink(id);
     if (youtubeLink == null) {
         console.warn('Youtube link not found');
     } else {

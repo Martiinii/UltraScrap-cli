@@ -30,8 +30,6 @@ export const getSongMetadata = (song: string) => {
     metadata.COVER = 'cover.jpg';
     metadata.MP3 = 'audio.mp3';
 
-    console.log(`Song: ${metadata.TITLE} by ${metadata.ARTIST}`)
-
     return {
         ...metadata,
         song: cleanSong,

@@ -28,6 +28,6 @@
         "ytdl-core": "^4.11.5"
     },
     "simple-git-hooks": {
-        "pre-commit": "npm run test"
+        "pre-push": "npm run test"
     }
 }

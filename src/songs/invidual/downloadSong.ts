@@ -5,7 +5,7 @@ import { mkdirSync, writeFileSync } from "node:fs"
 import { fetchSongYouTubeLink } from "./fetchSongYouTubeLink.js";
 import { createWriteStream } from 'node:fs'
 import ytdl from "ytdl-core";
-import { prompt } from "../index.js";
+import { prompt } from "../../index.js";
 
 /**
  * Download asynchronously song from the database

@@ -1,4 +1,4 @@
-import { convertMetadataToTxt, getSongClearRegex, getSongMetadataRegex, type Metadata } from '../getSongMetadata'
+import { convertMetadataToTxt, getSongClearRegex, getSongMetadataRegex, type Metadata } from '../invidual/getSongMetadata'
 import { readFileSync } from 'node:fs'
 
 describe('Song metadata regex', () => {

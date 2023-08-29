@@ -1,4 +1,4 @@
-import { getLoginCookie } from "../utils/login.js";
+import { getLoginCookie } from "../../utils/login.js";
 
 // POST requests made with this form data skip 25 of waiting time
 const txtBody = new FormData();

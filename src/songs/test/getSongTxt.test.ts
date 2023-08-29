@@ -1,4 +1,4 @@
-import { getSongTxtRegex } from "../fetchSongTxt";
+import { getSongTxtRegex } from "../invidual/fetchSongTxt";
 import { readFileSync } from 'node:fs'
 
 test('Extract song lyrics from HTML file', () => {

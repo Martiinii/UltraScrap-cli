@@ -1,8 +1,9 @@
 import 'dotenv/config'
 
+
 const loginUrl = "https://usdb.animux.de/index.php?link=login"
-const username = process.env.USERNAME!;
-const password = process.env.PASSWORD!;
+const username = process.env.ULTRASTAR_USERNAME!;
+const password = process.env.ULTRASTAR_PASSWORD!;
 
 const loginFormBody = new FormData();
 loginFormBody.set("user", username);
@@ -16,7 +17,6 @@ let loginCookie = '';
  * Set login cookie in variable
  */
 export const setLoginCookie = async () => {
-
     const loginFetch = await fetch(loginUrl, {
         method: 'POST',
         body: loginFormBody

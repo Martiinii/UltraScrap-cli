@@ -18,8 +18,8 @@ Just enter song id into the console.
 1. Create an account on https://usdb.animux.de (I recommend creating 2 accounts, one for browsing, second one for scrapper, see FAQ)
 2. Create `.env` file in the root directory and put the credentials here:
 ```env
-USERNAME="Your username here"
-PASSWORD="Your password here"
+ULTRASTAR_USERNAME="Your username here"
+ULTRASTAR_PASSWORD="Your password here"
 ```
 3. Run either:
  ```shell

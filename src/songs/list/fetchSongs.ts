@@ -1,5 +1,5 @@
 import { getLoginCookie } from "../../utils/login.js";
-import htmlTableToJson from 'html-table-to-json'
+import { SongType, parseTable } from "../../utils/parseTable.js";
 
 /**
  * Fetch one page of songs from database.
@@ -18,16 +18,8 @@ export const fetchSongPage = async (page: number) => {
     const tableString = getTableRegex(result);
     const songsCounts = getSongsCountsRegex(result);
 
-    const tableObj = htmlTableToJson.parse<['Artist', 'Title', 'Language', 'Views']>(tableString);
 
-    const parsedObj = tableObj.results[0].map(({ Artist: artist, Language: language, Title: title, Views: views }) => {
-        return {
-            title,
-            artist,
-            language: language.toLowerCase(),
-            views: parseInt(views)
-        }
-    });
+    const parsedObj = parseTable(tableString);
 
     return {
         data: parsedObj,
@@ -37,6 +29,22 @@ export const fetchSongPage = async (page: number) => {
         songsInPage: parsedObj.length
     }
 }
+
+
+
+
+export const fetchAllSongs = async () => {
+    const concurrentLimit = 5;
+
+    const songs: SongType[] = [];
+
+    const firstPage = await fetchSongPage(1);
+    songs.push(...firstPage.data);
+
+    // Todo: run thorugh every page in concurrent promises limited by variable, add them to list (or run some function, possibly callback)
+}
+
+
 
 /**
  * Retrieve table of songs from page
@@ -70,6 +78,6 @@ const getSongsCountsRegex = (page: string) => {
  * @returns Page URL
  */
 const generateNPageLink = (page: number) => {
-    const limit = 100;
+    const limit = 3;
     return `https://usdb.animux.de/?link=list&=&limit=${limit}&start=${(page - 1) * limit}`;
 }

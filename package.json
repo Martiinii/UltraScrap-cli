@@ -7,7 +7,7 @@
         "start": "node build/src/index.js",
         "build": "npm run test && tsc -p tsconfig.json",
         "buildstart": "tsc -p tsconfig.json && npm run start",
-        "test": "NODE_OPTIONS=--experimental-vm-modules jest"
+        "test": "node --experimental-vm-modules node_modules/jest/bin/jest.js"
     },
     "keywords": [],
     "author": "",

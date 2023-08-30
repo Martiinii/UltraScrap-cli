@@ -23,7 +23,6 @@
     },
     "dependencies": {
         "dotenv": "^16.3.1",
-        "html-table-to-json": "^1.0.0",
         "node-fetch": "^3.3.2",
         "prompt-sync": "^4.2.0",
         "ytdl-core": "^4.11.5"

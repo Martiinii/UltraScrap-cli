@@ -19,7 +19,7 @@ export const fetchSongTxt = async (id: string | number) => {
         body: txtBody
     });
     const response = await txt.text();
-
+    //console.log(`\nResponse: ${response}`);
     return getSongTxtRegex(response);
 }
 /**
@@ -30,5 +30,9 @@ export const fetchSongTxt = async (id: string | number) => {
  */
 export const getSongTxtRegex = (raw: string) => {
     const txtRegex = /<textarea.*>((.|\n|\r)*?)</
-    return raw.match(txtRegex)![1];
+    if (raw.match(txtRegex) === null) {
+        return "";
+    }
+    else 
+        return raw.match(txtRegex)![1];
 }

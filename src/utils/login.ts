@@ -1,8 +1,8 @@
 import 'dotenv/config'
 
 const loginUrl = "https://usdb.animux.de/index.php?link=login"
-const username = process.env.USERNAME!;
-const password = process.env.PASSWORD!;
+const username = process.env.ANIMUX_USERNAME!;
+const password = process.env.ANIMUX_PASSWORD!;
 
 const loginFormBody = new FormData();
 loginFormBody.set("user", username);

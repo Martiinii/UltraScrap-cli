@@ -1,0 +1,11 @@
+{
+    "files.exclude": {
+      "C:/Programs/UltraScrap/1/UltraScrap-cli-main": true,
+      "C:/Programs/UltraScrap/original": true
+    },
+    "diffEditor.external": true,
+    "diffEditor.external.diffToolPath": "C:\\Programs\\Meld\\meld.exe",
+    "diffEditor.external.diffToolArgs": "\"{left}\" \"{right}\""
+
+  }
+  

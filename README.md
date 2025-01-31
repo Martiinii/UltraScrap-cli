@@ -12,14 +12,26 @@ Instead of:
 - Downloading video and music separately
 - Changing filenames to match those in song txt file
 
-Just enter song id into the console.
+There are two modes to execute:
+1- download songs listed in a csv file (SONGS_TO_DOWNLOAD) containing an "id" column
+2- dowload all metadata of the songs and save them to a csv files (also with the id attribute)
 
 # How to use
 1. Create an account on https://usdb.animux.de (I recommend creating 2 accounts, one for browsing, second one for scrapper, see FAQ)
-2. Create `.env` file in the root directory and put the credentials here:
+2. Create `.env` file in the root directory and put 
+- the credentials
+- SONGS_TO_DOWNLOAD csv containing list of songs to download, only id is taken from it
+- LAST_PROCESSED_ID_FILE the id of the last processed song (for restarting)
+- FAULTING_IDS_FILE list of ids of songs with errors
+- DOWNLOADED_SONGS_METADATA_FILE csv of songs metadata
+- BASE_SONGS_PATH base directory where songs are stored
 ```env
-USERNAME="Your username here"
-PASSWORD="Your password here"
+ANIMUX_USERNAME="Your username here"
+ANIMUX_PASSWORD="Your password here"
+LAST_PROCESSED_ID_FILE="lastProcessedId.txt"
+FAULTING_IDS_FILE="faultingId.txt"
+DOWNLOADED_SONGS_METADATA_FILE="downloadedSongsMetadata.csv"
+BASE_SONGS_PATH="C:/Programs/UltraScrap/songs/"
 ```
 3. Run either:
  ```shell

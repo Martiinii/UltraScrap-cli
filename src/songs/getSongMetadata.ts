@@ -10,7 +10,8 @@ export type Metadata = {
     BPM: string,
     GAP: string,
     VIDEO: string,
-    song?: string
+    song?: string, 
+    raw: string // Add raw here to include it in the type definition
 }
 /**
  * Function to parse raw song txt file into object that contains metadata.

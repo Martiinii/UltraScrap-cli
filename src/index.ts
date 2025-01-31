@@ -114,35 +114,53 @@ async function main() {
     }
         
     if (mode === '1') {
-    const ids = await readCsvFile(songsToDownload);
-    let startProcessing = false;
-
-    for (const songId of ids) {
-        if (!startProcessing && lastProcessedId && songId !== lastProcessedId) {
-            continue; // Skip IDs until the last processed ID is found
+        if (!fs.existsSync(songsToDownload)) {
+            console.error('Error: have you set the SONGS_TO_DOWNLOAD in .env and the file exists? Sample file content: id,ARTIST,TITLE\n26443,Muse,Compliance\n');
+            return;
         }
-        
-        startProcessing = true;
-        if (songId == lastProcessedId) {
-            fs.appendFileSync(faultingIdFile, songId + '\n', 'utf-8'); // Append the current song ID to the file
-
-            continue; // Skip also the faulting ID
-        }
-
-        console.log(''); // Creates gap between downloaded songs. Do not use \n in prompt, it will cause visual glitches
+        let ids = null;    
         try {
-            fs.writeFileSync(lastProcessedIdFile, songId, 'utf-8'); // Save the current song ID to the file
-            await downloadSong(songId);
+            ids = await readCsvFile(songsToDownload);
         } catch (error: unknown) {
             const err = Err(error);
-            if (err.message.includes('ENOENT')) {
-                console.error('Specific error message for ENOENT:', err.message);
+            if (err.message.includes('no such file')) {
+                console.error('No ids found. Have you set the SONGS_TO_DOWNLOAD in .env and the file exists? Sample file content: id,ARTIST,TITLE\n26443,Muse,Compliance\n', err.message);
             } else {
-                console.error('Error during download:', err.message);
+                console.error('Error retrieving ids: ', err.message);
             }
-            continue; // Continue to the next iteration
+            return null;
         }
-    }
+        let startProcessing = false;
+        
+        for (const songId of ids) {
+            if (!startProcessing && lastProcessedId && songId !== lastProcessedId) {
+                continue; // Skip IDs until the last processed ID is found
+            }
+            
+            startProcessing = true;
+            if (songId == lastProcessedId) {
+                fs.appendFileSync(faultingIdFile, songId + '\n', 'utf-8'); // Append the current song ID to the file
+
+                continue; // Skip also the faulting ID
+            }
+
+            console.log(''); // Creates gap between downloaded songs. Do not use \n in prompt, it will cause visual glitches
+            try {
+                fs.writeFileSync(lastProcessedIdFile, songId, 'utf-8'); // Save the current song ID to the file
+                await downloadSong(songId);
+            } catch (error: unknown) {
+                const err = Err(error);
+                if (err.message.includes('ENOENT')) {
+                    console.error('Specific error message for ENOENT:', err.message);
+                } else {
+                    console.error('Error during download:', err.message);
+                }
+                continue; // Continue to the next iteration
+            }
+        }
+        if (startProcessing === false)
+            console.error(`No new songs to download. Check if ids are present in ${songsToDownload} and last processed id ${lastProcessedId} is in this list.`);
+
     } else if (mode === '2') {
         await fetchMetadataAndSaveToTxt(1, 30000, downloadedSongsMetadataFile);
     } else {

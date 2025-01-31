@@ -6,7 +6,7 @@
     "scripts": {
         "start": "node   --import ./loader.mjs  --trace-warnings --trace-uncaught src/index.ts",
         "start_old": "node --trace-uncaught build/src/index.js",
-        "build": "tsc -p C:\\Programs\\UltraScrap\\tsconfig.json",
+        "build": "tsc -p ./tsconfig.json",
         "buildstart": "npm run build && npm run start",
         "clean": "rd /s /q dist",
         "test": ""

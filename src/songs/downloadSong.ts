@@ -248,22 +248,23 @@ const promiseDownload = async (link: string, dirPath: string, filename: string, 
         {
             if ('contentLength' in info.formats[0] && info.formats[0].contentLength) {
                 totalSize = parseInt(info.formats[0].contentLength as string, 10);
-                console.log(`\ntotalSize from contentLength: ${totalSize}`);
+                process.stdout.write(`totalSize from contentLength: `);
             } else if (info.formats[0].bitrate && info.formats[0].approxDurationMs) {
                 totalSize = calculateApproxContentLength(info.formats[0].bitrate, parseInt(info.formats[0].approxDurationMs));
                 if (filename === 'video.mp4') 
                     totalSize = totalSize * 9; // Increase size by 25% for video{
                 else
                 totalSize = totalSize /2; // Decrease size by 50% for audio
-                console.log(`\ntotalSize from bitrate: ${totalSize}`);    
+                process.stdout.write(`totalSize from bitrate: `);    
             }
         } else { 
             if (filename === 'video.mp4') 
                 totalSize =190881996;
             else
                 totalSize =1908819;
-            console.log(`\ntotalSize from default: ${totalSize}`);    
+            process.stdout.write(`totalSize from default: `,);    
         }
+        console.log(`${Math.floor(totalSize/(1024*1024))} MB`);
         let downloadedSize = 0;
         let previousProgress = -10; // To ensure it starts with 9
         process.stdout.write(`\nDownloading ${filename} progress: `);

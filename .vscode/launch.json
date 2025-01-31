@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Launch Program",
             "skipFiles": ["<node_internals>/**"],
-            "program": "${workspaceFolder}/src/index.ts",
+            "program": "./src/index.ts",
             "runtimeArgs": [
                 "--import",
                 "./loader.mjs"
